@@ -2,7 +2,7 @@
 <html lang="ru" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport"="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Елена Кайль • Premium Lash Artist</title>
   <meta name="description" content="Премиум наращивание ресниц • Тобольск • Авторская техника"/>
 
@@ -10,6 +10,7 @@
   <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundles/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> <!-- Добавил Alpine для модалки -->
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cinzel+Decorative:wght@700&family=Satoshi:wght@300;400;500;700&display=swap');
@@ -18,20 +19,8 @@
       font-family: 'Satoshi', sans-serif; 
       background: #faf8f5; 
       color: #1a1a1a;
-          }
-    h1, h2 { font-family: 'Playfair Display', serif; }
-    .cursor {
-      pointer-events: none;
-      position: fixed;
-      width: 40px; height: 40px;
-      border: 2px solid #d4af37;
-      border-radius: 50%;
-      left: 0; top: 0;
-      transform: translate(-50%, -50%);
-      z-index: 9999;
-      transition: transform 0.1s;
     }
-    .cursor.active { transform: translate(-50%, -50%) scale(2.5); background: rgba(212,175,55,0.15); }
+    h1, h2 { font-family: 'Playfair Display', serif; }
     .noise::before {
       content: '';
       position: fixed;
@@ -45,18 +34,20 @@
 </head>
 <body class="overflow-x-hidden noise">
 
-  <div class="cursor"></div>
-
   <!-- HERO БОМБА -->
   <section class="relative h-screen overflow-hidden">
-    <img src="https://img.freepik.com/free-photo/sideview-young-woman-lying-lashes-enlarging_7502-9368.jpg?semt=ais_hybrid&w=740&q=80" 
+    <img src="https://s1.hostingkartinok.com/uploads/images/2025/11/6f471929049f1a75ed811ea4998aff53.jpg" 
          class="absolute inset-0 w-full h-full object-cover" 
          data-speed="0.8">
     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
     
     <div class="absolute bottom-0 left-0 right-0 pb-32 px-8 text-center text-white">
       <h1 class="text-7xl md:text-9xl font-bold tracking-tighter" data-animate>Елена Кайль</h1>
-      <p class="text-2xl md:text-4xl mt-4 tracking-widest" data-animate>LASHMAKER</p>
+      <p class="mt-6 text-4xl md:text-6xl tracking-[0.35em] uppercase" data-animate>
+  <span class="text-[#d4af37] font-normal" style="font-family: 'Playfair Display', Georgia, serif; letter-spacing: 0.4em; text-shadow: 0 2px 20px rgba(212,175,55,0.4);">
+    lashmaker
+  </span>
+</p>
       <p class="mt-6 text-lg opacity-90 max-w-2xl mx-auto" data-animate>
         Авторская техника • Держится до 6 недель • Более 100 довольных клиенток
       </p>
@@ -74,21 +65,60 @@
     </div>
   </div>
 
-  <!-- ГАЛЕРЕЯ МАКСИМАЛЬНЫЙ ШИК -->
-  <section class="py-32 px-6 bg-[#faf8f5]">
-    <h2 class="text-6xl md:text-8xl text-center mb-20" data-animate>Мои работы</h2>
-    
-    <div class="columns-2 md:columns-3 lg:columns-4 gap-6 max-w-7xl mx-auto">
-      <img src="https://sun9-52.userapi.com/s/v1/ig2/h9ywEGnsvFd3o0Vc5EKbch_XtaKQ_d_F5Ks3c99nhFFQN8GB6hVDcnfh6ydIYHWGsTJTprxCzCL1gx5q7AU9fbGx.jpg?quality=95&as=32x36,48x54,72x81,108x121,160x180,240x270,360x405,480x540,540x607,640x720,720x810,1080x1215,1280x1440,1440x1620,2276x2560&from=bu&cs=2276x0" class="mb-6 rounded-2xl hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl" data-animate loading="lazy">
-      <img src="https://sun9-84.userapi.com/s/v1/ig2/NCw1GOBoSqhBDBlFID7EcdYEu8CJW-PsiP5q6z_LixjnExbk_rLSIgAYibWCzHElIDgswgr-IuBwXlCq4WXkitsj.jpg?quality=95&as=32x37,48x55,72x83,108x125,160x185,240x277,360x416,480x555,540x624,640x739,720x832,1080x1248,1280x1479,1440x1664,2216x2560&from=bu&cs=2216x0" class="mb-6 rounded-2xl hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl" data-animate loading="lazy">
-      <img src="https://sun9-17.userapi.com/s/v1/ig2/GOB-yw0OYzYtKLoBJiREryKp1-HrRp23rWbKwp1D5cfVe2md39tVbgYbvuQiAIghQlwYR1ykdJEJ7zB7XZjbehko.jpg?quality=95&as=32x38,48x57,72x86,108x129,160x191,240x287,360x430,480x574,540x645,640x765,720x860,1080x1291,1280x1530,1440x1721,2142x2560&from=bu&cs=2142x0" class="mb-6 rounded-2xl hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl" data-animate loading="lazy">
-      <img src="https://sun9-11.userapi.com/s/v1/ig2/cVXhSGPQSxOcd8JH_Kc-KDVKiYFb16YPXTRBE_ONJXFivTz-UOnlk-h5fUORZIm5F4_iggHmrQi851Br2wjQPw0M.jpg?quality=95&as=32x42,48x63,72x95,108x143,160x211,240x317,360x476,480x634,540x714,640x846,720x952,1080x1427,1280x1692,1440x1903,1937x2560&from=bu&cs=1937x0" class="mb-6 rounded-2xl hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl" data-animate loading="lazy">
-      <img src="https://sun9-6.userapi.com/s/v1/ig2/8z0w3K5cd81NAEe51QUWUbCy4snYit4DjxkDPsiGVhoXfIt3loP1J-Af9Cs4zZMsUyKbX_9x5zKG3w2aSDFykSZ_.jpg?quality=95&as=32x38,48x57,72x85,108x128,160x189,240x284,360x426,480x568,540x639,640x758,720x852,1080x1278,1280x1515,1440x1705,1823x2158&from=bu&cs=1823x0" class="mb-6 rounded-2xl hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl" data-animate loading="lazy">
-      <img src="https://sun9-27.userapi.com/s/v1/ig2/RPn4SDnaNPGd24_V4KkJz3PsGGbTZdVskwY4zSKwxYQDH9CumtiCFwMsWO3ezi9vaTVkgdF-CXOiuIw412w1kxz_.jpg?quality=95&as=32x62,48x93,72x139,108x208,160x308,240x463,360x694,480x925,540x1041,640x1234,720x1388,1080x2082,1280x2467,1328x2560&from=bu&cs=1328x0" class="mb-6 rounded-2xl hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl" data-animate loading="lazy">
-      <img src="https://sun9-46.userapi.com/s/v1/ig2/oRuepXRWlmTxossT9TGM7yp4FlghzOC2W06ct6cEI9h2tXWfrthWGDAtW_z72U21eJEsj7mKDHnjMLxP2gP2-H14.jpg?quality=95&as=32x39,48x59,72x88,108x132,160x195,240x293,360x439,480x585,540x659,640x781,720x878,1080x1317,1280x1561,1440x1756,1725x2104&from=bu&cs=1725x0" class="mb-6 rounded-2xl hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl" data-animate loading="lazy">
-      <img src="https://sun9-36.userapi.com/s/v1/ig2/E2CIK7vb4No7vuwCLCP5OjvkBpvdYDNkTlb6QWdjORZBljqj3Dcdiqu6Vrio2dsLQNFCOjsxvHFyK7i5uDC6XS9Q.jpg?quality=95&as=32x40,48x60,72x91,108x136,160x202,240x302,360x453,480x605,540x680,640x806,720x907,951x1198&from=bu&cs=951x0" class="mb-6 rounded-2xl hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl" data-animate loading="lazy">
-    </div>
-  </section>
+<!-- ГАЛЕРЕЯ — ФИНАЛЬНАЯ РАБОЧАЯ ВЕРСИЯ (точно увеличивает) -->
+<section class="py-32 px-6 bg-[#faf8f5]" x-data="{ modalImage: '' }">
+  <h2 class="text-6xl md:text-8xl text-center mb-20" data-animate>Мои работы</h2>
+
+  <div class="columns-2 md:columns-3 lg:columns-4 gap-6 max-w-7xl mx-auto">
+
+    <!-- Просто копируй эту строку и меняй только ссылку в ДВУХ местах -->
+    <img src="https://sun9-52.userapi.com/s/v1/ig2/h9ywEGnsvFd3o0Vc5EKbch_XtaKQ_d_F5Ks3c99nhFFQN8GB6hVDcnfh6ydIYHWGsTJTprxCzCL1gx5q7AU9fbGx.jpg?quality=95&as=32x36,48x54,72x81,108x121,160x180,240x270,360x405,480x540,540x607,640x720,720x810,1080x1215,1280x1440,1440x1620,2276x2560&from=bu&cs=2276x0"
+         @click="modalImage = 'https://sun9-52.userapi.com/s/v1/ig2/h9ywEGnsvFd3o0Vc5EKbch_XtaKQ_d_F5Ks3c99nhFFQN8GB6hVDcnfh6ydIYHWGsTJTprxCzCL1gx5q7AU9fbGx.jpg?quality=95&as=32x36,48x54,72x81,108x121,160x180,240x270,360x405,480x540,540x607,640x720,720x810,1080x1215,1280x1440,1440x1620,2276x2560&from=bu&cs=2276x0'"
+         class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover"
+         loading="lazy">
+
+    <img src="https://sun9-84.userapi.com/s/v1/ig2/NCw1GOBoSqhBDBlFID7EcdYEu8CJW-PsiP5q6z_LixjnExbk_rLSIgAYibWCzHElIDgswgr-IuBwXlCq4WXkitsj.jpg?quality=95&as=32x37,48x55,72x83,108x125,160x185,240x277,360x416,480x555,540x624,640x739,720x832,1080x1248,1280x1479,1440x1664,2216x2560&from=bu&cs=2216x0"
+         @click="modalImage = 'https://sun9-84.userapi.com/s/v1/ig2/NCw1GOBoSqhBDBlFID7EcdYEu8CJW-PsiP5q6z_LixjnExbk_rLSIgAYibWCzHElIDgswgr-IuBwXlCq4WXkitsj.jpg?quality=95&as=32x37,48x55,72x83,108x125,160x185,240x277,360x416,480x555,540x624,640x739,720x832,1080x1248,1280x1479,1440x1664,2216x2560&from=bu&cs=2216x0'"
+         class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover"
+         loading="lazy">
+
+    <img src="https://sun9-17.userapi.com/s/v1/ig2/GOB-yw0OYzYtKLoBJiREryKp1-HrRp23rWbKwp1D5cfVe2md39tVbgYbvuQiAIghQlwYR1ykdJEJ7zB7XZjbehko.jpg?quality=95&as=32x38,48x57,72x86,108x129,160x191,240x287,360x430,480x574,540x645,640x765,720x860,1080x1291,1280x1530,1440x1721,2142x2560&from=bu&cs=2142x0"
+         @click="modalImage = 'https://sun9-17.userapi.com/s/v1/ig2/GOB-yw0OYzYtKLoBJiREryKp1-HrRp23rWbKwp1D5cfVe2md39tVbgYbvuQiAIghQlwYR1ykdJEJ7zB7XZjbehko.jpg?quality=95&as=32x38,48x57,72x86,108x129,160x191,240x287,360x430,480x574,540x645,640x765,720x860,1080x1291,1280x1530,1440x1721,2142x2560&from=bu&cs=2142x0'"
+         class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover"
+         loading="lazy">
+
+    <!-- Остальные 5 фото ниже — просто копипаст этой же строки и меняешь ссылки -->
+    <img src="https://sun9-11.userapi.com/s/v1/ig2/cVXhSGPQSxOcd8JH_Kc-KDVKiYFb16YPXTRBE_ONJXFivTz-UOnlk-h5fUORZIm5F4_iggHmrQi851Br2wjQPw0M.jpg?quality=95&as=32x42,48x63,72x95,108x143,160x211,240x317,360x476,480x634,540x714,640x846,720x952,1080x1427,1280x1692,1440x1903,1937x2560&from=bu&cs=1937x0"
+         @click="modalImage = 'https://sun9-11.userapi.com/s/v1/ig2/cVXhSGPQSxOcd8JH_Kc-KDVKiYFb16YPXTRBE_ONJXFivTz-UOnlk-h5fUORZIm5F4_iggHmrQi851Br2wjQPw0M.jpg?quality=95&as=32x42,48x63,72x95,108x143,160x211,240x317,360x476,480x634,540x714,640x846,720x952,1080x1427,1280x1692,1440x1903,1937x2560&from=bu&cs=1937x0'"
+         class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover" loading="lazy">
+
+    <img src="https://sun9-6.userapi.com/s/v1/ig2/8z0w3K5cd81NAEe51QUWUbCy4snYit4DjxkDPsiGVhoXfIt3loP1J-Af9Cs4zZMsUyKbX_9x5zKG3w2aSDFykSZ_.jpg?quality=95&as=32x38,48x57,72x85,108x128,160x189,240x284,360x426,480x568,540x639,640x758,720x852,1080x1278,1280x1515,1440x1705,1823x2158&from=bu&cs=1823x0"
+         @click="modalImage = 'https://sun9-6.userapi.com/s/v1/ig2/8z0w3K5cd81NAEe51QUWUbCy4snYit4DjxkDPsiGVhoXfIt3loP1J-Af9Cs4zZMsUyKbX_9x5zKG3w2aSDFykSZ_.jpg?quality=95&as=32x38,48x57,72x85,108x128,160x189,240x284,360x426,480x568,540x639,640x758,720x852,1080x1278,1280x1515,1440x1705,1823x2158&from=bu&cs=1823x0'"
+         class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover" loading="lazy">
+
+    <img src="https://sun9-27.userapi.com/s/v1/ig2/RPn4SDnaNPGd24_V4KkJz3PsGGbTZdVskwY4zSKwxYQDH9CumtiCFwMsWO3ezi9vaTVkgdF-CXOiuIw412w1kxz_.jpg?quality=95&as=32x62,48x93,72x139,108x208,160x308,240x463,360x694,480x925,540x1041,640x1234,720x1388,1080x2082,1280x2467,1328x2560&from=bu&cs=1328x0"
+         @click="modalImage = 'https://sun9-27.userapi.com/s/v1/ig2/RPn4SDnaNPGd24_V4KkJz3PsGGbTZdVskwY4zSKwxYQDH9CumtiCFwMsWO3ezi9vaTVkgdF-CXOiuIw412w1kxz_.jpg?quality=95&as=32x62,48x93,72x139,108x208,160x308,240x463,360x694,480x925,540x1041,640x1234,720x1388,1080x2082,1280x2467,1328x2560&from=bu&cs=1328x0'"
+         class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover" loading="lazy">
+
+    <img src="https://sun9-46.userapi.com/s/v1/ig2/oRuepXRWlmTxossT9TGM7yp4FlghzOC2W06ct6cEI9h2tXWfrthWGDAtW_z72U21eJEsj7mKDHnjMLxP2gP2-H14.jpg?quality=95&as=32x39,48x59,72x88,108x132,160x195,240x293,360x439,480x585,540x659,640x781,720x878,1080x1317,1280x1561,1440x1756,1725x2104&from=bu&cs=1725x0"
+         @click="modalImage = 'https://sun9-46.userapi.com/s/v1/ig2/oRuepXRWlmTxossT9TGM7yp4FlghzOC2W06ct6cEI9h2tXWfrthWGDAtW_z72U21eJEsj7mKDHnjMLxP2gP2-H14.jpg?quality=95&as=32x39,48x59,72x88,108x132,160x195,240x293,360x439,480x585,540x659,640x781,720x878,1080x1317,1280x1561,1440x1756,1725x2104&from=bu&cs=1725x0'"
+         class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover" loading="lazy">
+
+    <img src="https://sun9-36.userapi.com/s/v1/ig2/E2CIK7vb4No7vuwCLCP5OjvkBpvdYDNkTlb6QWdjORZBljqj3Dcdiqu6Vrio2dsLQNFCOjsxvHFyK7i5uDC6XS9Q.jpg?quality=95&as=32x40,48x60,72x91,108x136,160x202,240x302,360x453,480x605,540x680,640x806,720x907,951x1198&from=bu&cs=951x0"
+         @click="modalImage = 'https://sun9-36.userapi.com/s/v1/ig2/E2CIK7vb4No7vuwCLCP5OjvkBpvdYDNkTlb6QWdjORZBljqj3Dcdiqu6Vrio2dsLQNFCOjsxvHFyK7i5uDC6XS9Q.jpg?quality=95&as=32x40,48x60,72x91,108x136,160x202,240x302,360x453,480x605,540x680,640x806,720x907,951x1198&from=bu&cs=951x0'"
+         class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover" loading="lazy">
+
+  </div>
+
+  <!-- МОДАЛКА — НЕ ТРОГАЙ -->
+  <div x-show="modalImage" 
+       class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 p-8"
+       @click="modalImage = ''"
+       x-transition>
+    <img :src="modalImage" class="max-w-full max-h-full rounded-2xl shadow-2xl" @click.stop>
+    <button class="absolute top-8 right-8 text-white text-6xl hover:scale-125 transition" @click.stop="modalImage = ''">×</button>
+  </div>
+</section>
 
   <!-- ПОЧЕМУ Я -->
   <section class="py-32 px-6 bg-white">
@@ -145,7 +175,6 @@
         <p class="text-5xl font-bold text-[#d4af37]">2 200 ₽</p>
         <p class="mt-4 opacity-70">4 часа • максимальный драматичный объём</p>
       </div>
-      
     </div>
   </section>
 
@@ -153,8 +182,8 @@
   <section class="py-40 px-6 bg-black text-white text-center">
     <a href="https://vk.com/tobolskresnicy" 
        class="inline-block bg-[#d4af37] text-black px-24 py-12 text-4xl md:text-6xl font-bold rounded-full hover:scale-105 transition-all duration-500 relative overflow-hidden group">
-      <span class="relative z-10">ЗАПИСАТЬСЯ СЕЙЧАС</span>
-      <div class="particles"></div>
+       <span class="relative z-10">ЗАПИСАТЬСЯ СЕЙЧАС</span>
+       <div class="particles"></div>
     </a>
     <p class="mt-10 text-xl opacity-80">Свободные окошки улетают за 20 минут</p>
   </section>
@@ -164,7 +193,6 @@
   const lenis = new Lenis()
   lenis.on('scroll', ScrollTrigger.update)
   gsap.ticker.add((t) => lenis.raf(t * 1000))
-
 
   // Анимации
   gsap.utils.toArray('[data-animate]').forEach((el, i) => {
