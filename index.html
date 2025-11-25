@@ -65,59 +65,113 @@
     </div>
   </div>
 
-<!-- ГАЛЕРЕЯ — ФИНАЛЬНАЯ РАБОЧАЯ ВЕРСИЯ (точно увеличивает) -->
-<section class="py-32 px-6 bg-[#faf8f5]" x-data="{ modalImage: '' }">
+<!-- ГАЛЕРЕЯ С ПРОЛИСТЫВАНИЕМ ВЛЕВО/ВПРАВО + СВАЙП -->
+<section class="py-32 px-6 bg-[#faf8f5]" x-data="gallery()">
   <h2 class="text-6xl md:text-8xl text-center mb-20" data-animate>Мои работы</h2>
 
   <div class="columns-2 md:columns-3 lg:columns-4 gap-6 max-w-7xl mx-auto">
-
-    <!-- Просто копируй эту строку и меняй только ссылку в ДВУХ местах -->
+    <!-- Просто добавляй новые фотки сюда — они автоматически попадут в лайтбокс -->
     <img src="https://sun9-52.userapi.com/s/v1/ig2/h9ywEGnsvFd3o0Vc5EKbch_XtaKQ_d_F5Ks3c99nhFFQN8GB6hVDcnfh6ydIYHWGsTJTprxCzCL1gx5q7AU9fbGx.jpg?quality=95&as=32x36,48x54,72x81,108x121,160x180,240x270,360x405,480x540,540x607,640x720,720x810,1080x1215,1280x1440,1440x1620,2276x2560&from=bu&cs=2276x0"
-         @click="modalImage = 'https://sun9-52.userapi.com/s/v1/ig2/h9ywEGnsvFd3o0Vc5EKbch_XtaKQ_d_F5Ks3c99nhFFQN8GB6hVDcnfh6ydIYHWGsTJTprxCzCL1gx5q7AU9fbGx.jpg?quality=95&as=32x36,48x54,72x81,108x121,160x180,240x270,360x405,480x540,540x607,640x720,720x810,1080x1215,1280x1440,1440x1620,2276x2560&from=bu&cs=2276x0'"
+         @click="open(0)"
          class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover"
          loading="lazy">
 
     <img src="https://sun9-84.userapi.com/s/v1/ig2/NCw1GOBoSqhBDBlFID7EcdYEu8CJW-PsiP5q6z_LixjnExbk_rLSIgAYibWCzHElIDgswgr-IuBwXlCq4WXkitsj.jpg?quality=95&as=32x37,48x55,72x83,108x125,160x185,240x277,360x416,480x555,540x624,640x739,720x832,1080x1248,1280x1479,1440x1664,2216x2560&from=bu&cs=2216x0"
-         @click="modalImage = 'https://sun9-84.userapi.com/s/v1/ig2/NCw1GOBoSqhBDBlFID7EcdYEu8CJW-PsiP5q6z_LixjnExbk_rLSIgAYibWCzHElIDgswgr-IuBwXlCq4WXkitsj.jpg?quality=95&as=32x37,48x55,72x83,108x125,160x185,240x277,360x416,480x555,540x624,640x739,720x832,1080x1248,1280x1479,1440x1664,2216x2560&from=bu&cs=2216x0'"
-         class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover"
-         loading="lazy">
+         @click="open(1)" class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover" loading="lazy">
 
     <img src="https://sun9-17.userapi.com/s/v1/ig2/GOB-yw0OYzYtKLoBJiREryKp1-HrRp23rWbKwp1D5cfVe2md39tVbgYbvuQiAIghQlwYR1ykdJEJ7zB7XZjbehko.jpg?quality=95&as=32x38,48x57,72x86,108x129,160x191,240x287,360x430,480x574,540x645,640x765,720x860,1080x1291,1280x1530,1440x1721,2142x2560&from=bu&cs=2142x0"
-         @click="modalImage = 'https://sun9-17.userapi.com/s/v1/ig2/GOB-yw0OYzYtKLoBJiREryKp1-HrRp23rWbKwp1D5cfVe2md39tVbgYbvuQiAIghQlwYR1ykdJEJ7zB7XZjbehko.jpg?quality=95&as=32x38,48x57,72x86,108x129,160x191,240x287,360x430,480x574,540x645,640x765,720x860,1080x1291,1280x1530,1440x1721,2142x2560&from=bu&cs=2142x0'"
-         class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover"
-         loading="lazy">
+         @click="open(2)" class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover" loading="lazy">
 
-    <!-- Остальные 5 фото ниже — просто копипаст этой же строки и меняешь ссылки -->
     <img src="https://sun9-11.userapi.com/s/v1/ig2/cVXhSGPQSxOcd8JH_Kc-KDVKiYFb16YPXTRBE_ONJXFivTz-UOnlk-h5fUORZIm5F4_iggHmrQi851Br2wjQPw0M.jpg?quality=95&as=32x42,48x63,72x95,108x143,160x211,240x317,360x476,480x634,540x714,640x846,720x952,1080x1427,1280x1692,1440x1903,1937x2560&from=bu&cs=1937x0"
-         @click="modalImage = 'https://sun9-11.userapi.com/s/v1/ig2/cVXhSGPQSxOcd8JH_Kc-KDVKiYFb16YPXTRBE_ONJXFivTz-UOnlk-h5fUORZIm5F4_iggHmrQi851Br2wjQPw0M.jpg?quality=95&as=32x42,48x63,72x95,108x143,160x211,240x317,360x476,480x634,540x714,640x846,720x952,1080x1427,1280x1692,1440x1903,1937x2560&from=bu&cs=1937x0'"
-         class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover" loading="lazy">
+         @click="open(3)" class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover" loading="lazy">
 
     <img src="https://sun9-6.userapi.com/s/v1/ig2/8z0w3K5cd81NAEe51QUWUbCy4snYit4DjxkDPsiGVhoXfIt3loP1J-Af9Cs4zZMsUyKbX_9x5zKG3w2aSDFykSZ_.jpg?quality=95&as=32x38,48x57,72x85,108x128,160x189,240x284,360x426,480x568,540x639,640x758,720x852,1080x1278,1280x1515,1440x1705,1823x2158&from=bu&cs=1823x0"
-         @click="modalImage = 'https://sun9-6.userapi.com/s/v1/ig2/8z0w3K5cd81NAEe51QUWUbCy4snYit4DjxkDPsiGVhoXfIt3loP1J-Af9Cs4zZMsUyKbX_9x5zKG3w2aSDFykSZ_.jpg?quality=95&as=32x38,48x57,72x85,108x128,160x189,240x284,360x426,480x568,540x639,640x758,720x852,1080x1278,1280x1515,1440x1705,1823x2158&from=bu&cs=1823x0'"
-         class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover" loading="lazy">
+         @click="open(4)" class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover" loading="lazy">
 
     <img src="https://sun9-27.userapi.com/s/v1/ig2/RPn4SDnaNPGd24_V4KkJz3PsGGbTZdVskwY4zSKwxYQDH9CumtiCFwMsWO3ezi9vaTVkgdF-CXOiuIw412w1kxz_.jpg?quality=95&as=32x62,48x93,72x139,108x208,160x308,240x463,360x694,480x925,540x1041,640x1234,720x1388,1080x2082,1280x2467,1328x2560&from=bu&cs=1328x0"
-         @click="modalImage = 'https://sun9-27.userapi.com/s/v1/ig2/RPn4SDnaNPGd24_V4KkJz3PsGGbTZdVskwY4zSKwxYQDH9CumtiCFwMsWO3ezi9vaTVkgdF-CXOiuIw412w1kxz_.jpg?quality=95&as=32x62,48x93,72x139,108x208,160x308,240x463,360x694,480x925,540x1041,640x1234,720x1388,1080x2082,1280x2467,1328x2560&from=bu&cs=1328x0'"
-         class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover" loading="lazy">
+         @click="open(5)" class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover" loading="lazy">
 
     <img src="https://sun9-46.userapi.com/s/v1/ig2/oRuepXRWlmTxossT9TGM7yp4FlghzOC2W06ct6cEI9h2tXWfrthWGDAtW_z72U21eJEsj7mKDHnjMLxP2gP2-H14.jpg?quality=95&as=32x39,48x59,72x88,108x132,160x195,240x293,360x439,480x585,540x659,640x781,720x878,1080x1317,1280x1561,1440x1756,1725x2104&from=bu&cs=1725x0"
-         @click="modalImage = 'https://sun9-46.userapi.com/s/v1/ig2/oRuepXRWlmTxossT9TGM7yp4FlghzOC2W06ct6cEI9h2tXWfrthWGDAtW_z72U21eJEsj7mKDHnjMLxP2gP2-H14.jpg?quality=95&as=32x39,48x59,72x88,108x132,160x195,240x293,360x439,480x585,540x659,640x781,720x878,1080x1317,1280x1561,1440x1756,1725x2104&from=bu&cs=1725x0'"
-         class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover" loading="lazy">
+         @click="open(6)" class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover" loading="lazy">
 
     <img src="https://sun9-36.userapi.com/s/v1/ig2/E2CIK7vb4No7vuwCLCP5OjvkBpvdYDNkTlb6QWdjORZBljqj3Dcdiqu6Vrio2dsLQNFCOjsxvHFyK7i5uDC6XS9Q.jpg?quality=95&as=32x40,48x60,72x91,108x136,160x202,240x302,360x453,480x605,540x680,640x806,720x907,951x1198&from=bu&cs=951x0"
-         @click="modalImage = 'https://sun9-36.userapi.com/s/v1/ig2/E2CIK7vb4No7vuwCLCP5OjvkBpvdYDNkTlb6QWdjORZBljqj3Dcdiqu6Vrio2dsLQNFCOjsxvHFyK7i5uDC6XS9Q.jpg?quality=95&as=32x40,48x60,72x91,108x136,160x202,240x302,360x453,480x605,540x680,640x806,720x907,951x1198&from=bu&cs=951x0'"
-         class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover" loading="lazy">
-
+         @click="open(7)" class="mb-6 w-full rounded-2xl cursor-zoom-in hover:scale-105 transition-all duration-700 shadow-xl hover:shadow-2xl object-cover" loading="lazy">
   </div>
 
-  <!-- МОДАЛКА — НЕ ТРОГАЙ -->
-  <div x-show="modalImage" 
-       class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 p-8"
-       @click="modalImage = ''"
-       x-transition>
-    <img :src="modalImage" class="max-w-full max-h-full rounded-2xl shadow-2xl" @click.stop>
-    <button class="absolute top-8 right-8 text-white text-6xl hover:scale-125 transition" @click.stop="modalImage = ''">×</button>
-  </div>
+  <!-- ЛАЙТБОКС С ПРОЛИСТЫВАНИЕМ -->
+  <template x-if="isOpen">
+    <div class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 px-4" 
+         @click="close()" 
+         @keydown.left.window="prev()" 
+         @keydown.right.window="next()"
+         @keydown.esc.window="close()"
+         x-transition>
+
+      <!-- Стрелка влево -->
+      <button @click.stop="prev()" 
+              class="absolute left-4 md:left-8 text-white text-6xl hover:scale-125 transition z-10">
+        ←
+      </button>
+
+      <!-- Стрелка вправо -->
+      <button @click.stop="next()" 
+              class="absolute right-4 md:right-8 text-white text-6xl hover:scale-125 transition z-10">
+        →
+      </button>
+
+      <!-- Большое фото -->
+      <img :src="images[currentIndex]" 
+           class="max-w-full max-h-full rounded-2xl shadow-2xl object-contain"
+           @click.stop>
+
+      <!-- Крестик -->
+      <button class="absolute top-8 right-8 text-white text-6xl hover:scale-125 transition" 
+              @click.stop="close()">
+        ×
+      </button>
+
+      <!-- Номер фото -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/70 text-lg">
+        <span x-text="currentIndex + 1"></span> / <span x-text="images.length"></span>
+      </div>
+    </div>
+  </template>
+
+  <!-- Alpine-скрипт для галереи (вставь один раз в конец <body>, перед </body>) -->
+  <script>
+    function gallery() {
+      return {
+        images: [
+          "https://sun9-52.userapi.com/s/v1/ig2/h9ywEGnsvFd3o0Vc5EKbch_XtaKQ_d_F5Ks3c99nhFFQN8GB6hVDcnfh6ydIYHWGsTJTprxCzCL1gx5q7AU9fbGx.jpg?quality=95&as=32x36,48x54,72x81,108x121,160x180,240x270,360x405,480x540,540x607,640x720,720x810,1080x1215,1280x1440,1440x1620,2276x2560&from=bu&cs=2276x0",
+          "https://sun9-84.userapi.com/s/v1/ig2/NCw1GOBoSqhBDBlFID7EcdYEu8CJW-PsiP5q6z_LixjnExbk_rLSIgAYibWCzHElIDgswgr-IuBwXlCq4WXkitsj.jpg?quality=95&as=32x37,48x55,72x83,108x125,160x185,240x277,360x416,480x555,540x624,640x739,720x832,1080x1248,1280x1479,1440x1664,2216x2560&from=bu&cs=2216x0",
+          "https://sun9-17.userapi.com/s/v1/ig2/GOB-yw0OYzYtKLoBJiREryKp1-HrRp23rWbKwp1D5cfVe2md39tVbgYbvuQiAIghQlwYR1ykdJEJ7zB7XZjbehko.jpg?quality=95&as=32x38,48x57,72x86,108x129,160x191,240x287,360x430,480x574,540x645,640x765,720x860,1080x1291,1280x1530,1440x1721,2142x2560&from=bu&cs=2142x0",
+          "https://sun9-11.userapi.com/s/v1/ig2/cVXhSGPQSxOcd8JH_Kc-KDVKiYFb16YPXTRBE_ONJXFivTz-UOnlk-h5fUORZIm5F4_iggHmrQi851Br2wjQPw0M.jpg?quality=95&as=32x42,48x63,72x95,108x143,160x211,240x317,360x476,480x634,540x714,640x846,720x952,1080x1427,1280x1692,1440x1903,1937x2560&from=bu&cs=1937x0",
+          "https://sun9-6.userapi.com/s/v1/ig2/8z0w3K5cd81NAEe51QUWUbCy4snYit4DjxkDPsiGVhoXfIt3loP1J-Af9Cs4zZMsUyKbX_9x5zKG3w2aSDFykSZ_.jpg?quality=95&as=32x38,48x57,72x85,108x128,160x189,240x284,360x426,480x568,540x639,640x758,720x852,1080x1278,1280x1515,1440x1705,1823x2158&from=bu&cs=1823x0",
+          "https://sun9-27.userapi.com/s/v1/ig2/RPn4SDnaNPGd24_V4KkJz3PsGGbTZdVskwY4zSKwxYQDH9CumtiCFwMsWO3ezi9vaTVkgdF-CXOiuIw412w1kxz_.jpg?quality=95&as=32x62,48x93,72x139,108x208,160x308,240x463,360x694,480x925,540x1041,640x1234,720x1388,1080x2082,1280x2467,1328x2560&from=bu&cs=1328x0",
+          "https://sun9-46.userapi.com/s/v1/ig2/oRuepXRWlmTxossT9TGM7yp4FlghzOC2W06ct6cEI9h2tXWfrthWGDAtW_z72U21eJEsj7mKDHnjMLxP2gP2-H14.jpg?quality=95&as=32x39,48x59,72x88,108x132,160x195,240x293,360x439,480x585,540x659,640x781,720x878,1080x1317,1280x1561,1440x1756,1725x2104&from=bu&cs=1725x0",
+          "https://sun9-36.userapi.com/s/v1/ig2/E2CIK7vb4No7vuwCLCP5OjvkBpvdYDNkTlb6QWdjORZBljqj3Dcdiqu6Vrio2dsLQNFCOjsxvHFyK7i5uDC6XS9Q.jpg?quality=95&as=32x40,48x60,72x91,108x136,160x202,240x302,360x453,480x605,540x680,640x806,720x907,951x1198&from=bu&cs=951x0"
+        ],
+        isOpen: false,
+        currentIndex: 0,
+
+        open(index) {
+          this.currentIndex = index
+          this.isOpen = true
+          document.body.style.overflow = 'hidden'
+        },
+        close() {
+          this.isOpen = false
+          document.body.style.overflow = ''
+        },
+        next() {
+          this.currentIndex = (this.currentIndex + 1) % this.images.length
+        },
+        prev() {
+          this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length
+        }
+      }
+    }
+  </script>
 </section>
 
   <!-- ПОЧЕМУ Я -->
@@ -224,3 +278,4 @@
 </style>
 </body>
 </html>
+
